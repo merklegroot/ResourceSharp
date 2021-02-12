@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ResourceSharpLib;
+using ResourceSharp;
 using System;
 
-namespace ResourceSharpLibTests
+namespace ResourceSharpTests
 {
     [TestClass]
     public class ResourceRepoTests

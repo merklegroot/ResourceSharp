@@ -1,10 +1,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ResourceSharpLib;
+using ResourceSharp;
 using Shouldly;
 using System;
 using System.Collections.Generic;
 
-namespace ResourceSharpLibTests
+namespace ResourceSharpTests
 {
     [TestClass]
     public class NameFinderTests

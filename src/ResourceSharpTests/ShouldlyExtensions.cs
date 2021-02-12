@@ -1,7 +1,7 @@
 ﻿using Shouldly;
 using System;
 
-namespace ResourceSharpLibTests
+namespace ResourceSharpTests
 {
     public static class ShouldlyExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace ResourceSharpLib
+namespace ResourceSharp
 {
     public interface IResourceRepo
     {
