@@ -26,3 +26,7 @@ jobs:
     - name: Test
       working-directory: ./src/
       run: dotnet test --no-build --verbosity normal
+
+    - name: Pack
+      working-directory: ./src/ResourceSharp
+      run: dotnet pack --configuration Release
