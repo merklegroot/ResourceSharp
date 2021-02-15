@@ -1,46 +1,27 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ResourceSharp;
+﻿using ResourceSharp;
+using Shouldly;
 using System;
+using Xunit;
 
 namespace ResourceSharpTests
 {
-    [TestClass]
     public class ResourceRepoTests
     {
-        private ResourceRepo _resourceRepo;
 
-        [TestInitialize]
-        public void Initialize()
-        {
-            _resourceRepo = new ResourceRepo();
-        }
+        [Fact]
+        public void Get_text_resource() =>
+            new ResourceRepo().Get("lorem-ipsum.txt", GetType().Assembly)
+                .ShouldBe("Lorem ipsum", StringComparison.Ordinal);
 
-        [TestMethod]
-        public void Get_text_resource()
-        {
-            var text = _resourceRepo.Get("lorem-ipsum.txt", GetType().Assembly);
-            Console.WriteLine(text);
+        [Fact]
+        public void Get_text_resource_without_specifying_assembly() =>
+            new ResourceRepo().Get("lorem-ipsum.txt")
+                .ShouldBe("Lorem ipsum", StringComparison.Ordinal);
 
-            text.ShouldBe("Lorem ipsum", StringComparison.Ordinal);
-        }
-
-        [TestMethod]
-        public void Get_text_resource_without_specifying_assembly()
-        {
-            var text = _resourceRepo.Get("lorem-ipsum.txt");
-            Console.WriteLine(text);
-
-            text.ShouldBe("Lorem ipsum", StringComparison.Ordinal);
-        }
-
-        [TestMethod]
-        public void Get_non_existent_resource()
-        {
-            Assert.ThrowsException<ApplicationException>(() =>
-            { 
-                _resourceRepo.Get("argh", GetType().Assembly);
-            });
-        }
+        [Fact]
+        public void Get_non_existent_resource() =>
+            Should.Throw<ApplicationException>(() => 
+                new ResourceRepo().Get("argh", GetType().Assembly));
 
         private class Person
         {
@@ -48,10 +29,10 @@ namespace ResourceSharpTests
             public string FirstName { get; set; }
         }
 
-        [TestMethod]
+        [Fact]
         public void Get_json_resource()
         {
-            var person = _resourceRepo.Get<Person>("person", GetType().Assembly);
+            var person = new ResourceRepo().Get<Person>("person", GetType().Assembly);
 
             person.LastName.ShouldBe("Jenkins", StringComparison.Ordinal);
             person.FirstName.ShouldBe("Leeroy", StringComparison.Ordinal);
