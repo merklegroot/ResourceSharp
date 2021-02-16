@@ -25,11 +25,15 @@ jobs:
 
     - name: Build
       working-directory: ./src/
-      run: dotnet build --no-restore -c Release
+      run: dotnet build --no-restore
 
     - name: Test
       working-directory: ./src/
       run: dotnet test --no-build --verbosity normal
+
+    - name: Build
+      working-directory: ./src/
+      run: dotnet build --no-restore -c Release
 
     - name: Pack
       working-directory: ./src/
