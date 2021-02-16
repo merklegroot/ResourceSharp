@@ -37,5 +37,5 @@ jobs:
 
     - name: Publish
       working-directory: ./src/ResourceSharp/bin/Release
-      run: dotnet nuget push ResourceSharp.0.0.1.nupkg -s https://nuget.pkg.github.com/merklegroot/index.json --api-key ${{secrets.NUGET_API_KEY}}
+      run: dotnet nuget push ResourceSharp.1.0.0.nupkg -s https://nuget.pkg.github.com/merklegroot/index.json --api-key ${{secrets.NUGET_API_KEY}}
 
