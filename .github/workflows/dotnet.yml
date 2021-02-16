@@ -13,20 +13,29 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+
     - name: Restore dependencies
       working-directory: ./src/
       run: dotnet restore
+
     - name: Build
       working-directory: ./src/
       run: dotnet build --no-restore
+
     - name: Test
       working-directory: ./src/
       run: dotnet test --no-build --verbosity normal
 
     - name: Pack
-      working-directory: ./src/ResourceSharp
+      working-directory: ./src/
       run: dotnet pack --configuration Release
+
+    - name: Publish
+      working-directory: ./src/ResourceSharp/bin/Release
+      run: dotnet nuget push ResourceSharp.0.0.1.nupkg -s https://nuget.pkg.github.com/merklegroot/index.json --api-key ${{secrets.NUGET_API_KEY}}
+
