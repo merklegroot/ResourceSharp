@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright />
+    <PackageLicenseUrl>https://raw.githubusercontent.com/merklegroot/ResourceSharp/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/merklegroot/ResourceSharp</PackageProjectUrl>
+    <Description>A library for reading .NET Embedded Resoureces</Description>
+    <PackageId>ResourceSharp</PackageId>
+    <Company />
+    <RepositoryUrl>https://github.com/merklegroot/ResourceSharp</RepositoryUrl>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
